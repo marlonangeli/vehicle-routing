@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRouting.Api", "VehicleRouting.Api\VehicleRouting.Api.csproj", "{3C4B005E-FE5B-4D62-BDB1-2B5CE2408EAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRouting.Api", "src\VehicleRouting.Api\VehicleRouting.Api.csproj", "{3C4B005E-FE5B-4D62-BDB1-2B5CE2408EAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AAA8A7F3-709C-426C-B854-F94EB0D2A94B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRouting.Domain", "src\VehicleRouting.Domain\VehicleRouting.Domain.csproj", "{3A236861-5F48-436C-B883-BA8E218F822D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{3C4B005E-FE5B-4D62-BDB1-2B5CE2408EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C4B005E-FE5B-4D62-BDB1-2B5CE2408EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C4B005E-FE5B-4D62-BDB1-2B5CE2408EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A236861-5F48-436C-B883-BA8E218F822D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A236861-5F48-436C-B883-BA8E218F822D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A236861-5F48-436C-B883-BA8E218F822D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A236861-5F48-436C-B883-BA8E218F822D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C4B005E-FE5B-4D62-BDB1-2B5CE2408EAC} = {AAA8A7F3-709C-426C-B854-F94EB0D2A94B}
+		{3A236861-5F48-436C-B883-BA8E218F822D} = {AAA8A7F3-709C-426C-B854-F94EB0D2A94B}
 	EndGlobalSection
 EndGlobal
