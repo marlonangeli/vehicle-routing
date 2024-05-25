@@ -7,7 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="Google.Maps.Routing.V2" Version="1.0.0-beta14" />
+      <PackageReference Include="Google.OrTools" Version="9.10.4067" />
     </ItemGroup>
 
 </Project>
