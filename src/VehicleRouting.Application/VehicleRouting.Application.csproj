@@ -7,8 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.9.1" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
       <PackageReference Include="Google.Maps.Routing.V2" Version="1.0.0-beta14" />
       <PackageReference Include="Google.OrTools" Version="9.10.4067" />
+      <PackageReference Include="MediatR" Version="12.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VehicleRouting.Domain\VehicleRouting.Domain.csproj" />
     </ItemGroup>
 
 </Project>
