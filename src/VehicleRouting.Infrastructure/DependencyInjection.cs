@@ -9,9 +9,13 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfraestructure(this IServiceCollection services, IConfiguration configuration)
     {
+        var conn = configuration.GetConnectionString(DatabaseConstants.VRPDatabase) ??
+                   throw new ArgumentNullException("Connection string not found.",
+                       $"{DatabaseConstants.VRPDatabase}");
+
         services.AddDbContext<VehicleRoutingDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString(DatabaseConstants.VRPDatabase),
+            options.UseNpgsql(configuration.GetConnectionString(conn),
                 builder => builder.MigrationsAssembly(typeof(VehicleRoutingDbContext).Assembly.FullName));
             options.EnableDetailedErrors();
             options.EnableSensitiveDataLogging();

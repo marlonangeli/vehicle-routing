@@ -20,4 +20,8 @@
       <ProjectReference Include="..\VehicleRouting.Infrastructure\VehicleRouting.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Endpoints\" />
+    </ItemGroup>
+
 </Project>
