@@ -1,21 +1,25 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using VehicleRouting.Application.Core.CreateVehicle;
+using VehicleRouting.Application.Core.Vehicles;
 
 namespace VehicleRouting.Api.Endpoints;
 
 public static class VehicleEndpoints
 {
-    public static IEndpointRouteBuilder MapVehicles(this IEndpointRouteBuilder route)
+    public static IEndpointRouteBuilder MapVehicles(this IEndpointRouteBuilder app)
     {
-        route.MapPost("/vehicles", CreateVehicle)
+        var group = app.MapGroup("api/vehicles")
+            .WithGroupName("Vehicles")
+            .WithOpenApi();
+
+        group.MapPost("", CreateVehicle)
             .WithName("CreateVehicle")
             .WithOpenApi();
 
-        return route;
+        return app;
     }
 
-    public async static Task<IResult> CreateVehicle(
+    private static async Task<IResult> CreateVehicle(
         [FromServices] ISender sender,
         [FromBody] CreateVehicle.Command command,
         CancellationToken cancellationToken)

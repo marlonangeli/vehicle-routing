@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VehicleRouting.Domain.Common;
+using VehicleRouting.Domain.Constants;
 using VehicleRouting.Domain.Entities;
 using VehicleRouting.Infrastructure.Extensions;
 
@@ -40,7 +41,7 @@ public sealed class VehicleRoutingDbContext : DbContext
 
         modelBuilder.Entity<Driver>()
             .Property(d => d.Name)
-            .HasMaxLength(64)
+            .HasMaxLength(EntityConstants.Driver.NameMaxLength)
             .IsRequired();
 
         modelBuilder.Entity<Place>()
@@ -48,12 +49,12 @@ public sealed class VehicleRoutingDbContext : DbContext
 
         modelBuilder.Entity<Place>()
             .Property(p => p.Name)
-            .HasMaxLength(100)
+            .HasMaxLength(EntityConstants.Place.NameMaxLength)
             .IsRequired(false);
 
         modelBuilder.Entity<Place>()
             .Property(p => p.Description)
-            .HasMaxLength(255)
+            .HasMaxLength(EntityConstants.Place.DescriptionMaxLength)
             .IsRequired(false);
 
         modelBuilder.Entity<Place>()
@@ -64,7 +65,7 @@ public sealed class VehicleRoutingDbContext : DbContext
                 a.Property(address => address.Longitude)
                     .IsRequired(false);
                 a.Property(address => address.FullAddress)
-                    .HasMaxLength(255)
+                    .HasMaxLength(EntityConstants.Place.FullAddressMaxLength)
                     .IsRequired(false);
             });
 
@@ -73,7 +74,7 @@ public sealed class VehicleRoutingDbContext : DbContext
 
         modelBuilder.Entity<Vehicle>()
             .Property(v => v.Plate)
-            .HasMaxLength(8)
+            .HasMaxLength(EntityConstants.Vehicle.PlateMaxLength)
             .IsRequired();
 
         modelBuilder.Entity<Vehicle>()
@@ -82,10 +83,10 @@ public sealed class VehicleRoutingDbContext : DbContext
                 m.IsRequired();
 
                 m.Property(model => model.Brand)
-                    .HasMaxLength(32)
+                    .HasMaxLength(EntityConstants.Vehicle.ModelBrandMaxLength)
                     .IsRequired(false);
                 m.Property(model => model.Model)
-                    .HasMaxLength(32)
+                    .HasMaxLength(EntityConstants.Vehicle.ModelNameMaxLength)
                     .IsRequired(false);
                 m.Property(model => model.Year)
                     .IsRequired(false);
@@ -122,7 +123,7 @@ public sealed class VehicleRoutingDbContext : DbContext
 
     private void UpdateAuditableEntities()
     {
-        var utcNow = DateTime.Now;
+        var utcNow = DateTime.UtcNow;
 
         foreach (var entityEntry in ChangeTracker.Entries<Entity>())
         {
@@ -137,5 +138,4 @@ public sealed class VehicleRoutingDbContext : DbContext
             }
         }
     }
-
 }

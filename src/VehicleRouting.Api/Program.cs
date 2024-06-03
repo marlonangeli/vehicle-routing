@@ -22,7 +22,6 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
-app.MapPlaces()
-    .MapVehicles();
+app.MapPlaces();
 
-app.Run();
+await app.RunAsync();
