@@ -15,8 +15,9 @@ public static class DependencyInjection
 
         services.AddDbContext<VehicleRoutingDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString(conn),
-                builder => builder.MigrationsAssembly(typeof(VehicleRoutingDbContext).Assembly.FullName));
+            options.UseNpgsql(conn,
+                builder => builder.MigrationsAssembly(typeof(VehicleRoutingDbContext).Assembly.FullName)
+                    .EnableRetryOnFailure());
             options.EnableDetailedErrors();
             options.EnableSensitiveDataLogging();
         });

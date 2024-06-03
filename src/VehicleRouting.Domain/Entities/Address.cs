@@ -2,23 +2,47 @@
 
 public class Address
 {
-    public string? PlusCode { get; set; }
-    public (double Lat, double Lon) LatitudeLongitude { get; set; }
+    // public string? PlusCode { get; set; }
+    public double? Latitude { get; set; }
+    public double? Longitude { get; set; }
     public string? FullAddress { get; set; }
+
+    public Address(double? lat, double? lon, string? address)
+    {
+        if (lat is null || lon is null)
+            throw new ArgumentNullException(nameof(lat), "Latitude and longitude cannot be null.");
+
+
+        if (!IsValidLatitudeLongitude((double)lat, (double)lon) || !IsValidFullAddress(address))
+        {
+            throw new ArgumentException("Invalid address.", nameof(address));
+        }
+
+        Latitude = lat;
+        Longitude = lon;
+        FullAddress = address;
+    }
 
     public Address(double lat, double lon)
     {
         if (IsValidLatitudeLongitude(lat, lon))
-            LatitudeLongitude = (lat, lon);
+        {
+            Latitude = lat;
+            Longitude = lon;
+        }
     }
 
     public Address(string address)
     {
-        if (IsValidPlusCode(address))
-            PlusCode = address;
-        else if (IsValidFullAddress(address))
+        // if (IsValidPlusCode(address))
+        //     PlusCode = address;
+        // else if (IsValidFullAddress(address))
+        //     FullAddress = address;
+        if (IsValidFullAddress(address))
             FullAddress = address;
     }
+
+    public Address() {}
 
 
     private bool IsValidLatitudeLongitude(double lat, double lon)

@@ -1,5 +1,6 @@
 using Serilog;
 using VehicleRouting.Api;
+using VehicleRouting.Api.Endpoints;
 using VehicleRouting.Application;
 using VehicleRouting.Infrastructure;
 
@@ -17,10 +18,10 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => Results.Ok("Hello world!"))
-    .WithName("Hi")
-    .WithOpenApi();
+app.MapPlaces();
 
 app.Run();
