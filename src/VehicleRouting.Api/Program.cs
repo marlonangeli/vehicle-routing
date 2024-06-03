@@ -22,6 +22,7 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
-app.MapPlaces();
+app.MapPlaces()
+    .MapVehicles();
 
 app.Run();

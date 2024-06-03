@@ -15,7 +15,7 @@ public class LoggingPipelineBehavior<TRequest, TResponse>(
         CancellationToken cancellationToken)
     {
         logger.LogInformation("Starting request {@Request} at {@DateTimeUtc}",
-            typeof(TRequest).Name,
+            typeof(TRequest).FullName,
             DateTime.UtcNow);
 
         try
@@ -27,14 +27,14 @@ public class LoggingPipelineBehavior<TRequest, TResponse>(
         catch (Exception e)
         {
             logger.LogError("Error handling request {@Request} at {@DateTimeUtc} with error {@Error}",
-                typeof(TRequest).Name,
+                typeof(TRequest).FullName,
                 DateTime.UtcNow,
                 e.Message);
         }
         finally
         {
             logger.LogInformation("Finished request {@Request} at {@DateTimeUtc}",
-                typeof(TRequest).Name,
+                typeof(TRequest).FullName,
                 DateTime.UtcNow);
         }
 

@@ -7,7 +7,7 @@ public class Vehicle : Entity
     public string Plate { get; set; }
     public VehicleType Type { get; set; }
     public int Capacity { get; set; }
-    public LicenseType Licence { get; set; }
+    public LicenseType License { get; set; }
     public bool HasInternationalLicence { get; set; }
     public double Consumption { get; set; }
     public FuelType FuelType { get; set; }
