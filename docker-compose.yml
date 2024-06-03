@@ -1,0 +1,20 @@
+﻿services:
+  vehiclerouting.api:
+    image: vehiclerouting.api
+    build:
+      context: .
+      dockerfile: src/VehicleRouting.Api/Dockerfile
+
+  vehiclerouting.db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: vrp_user
+      POSTGRES_PASSWORD: vrp_password
+      POSTGRES_DB: vrpdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - vehiclerouting-db-data:/var/lib/postgresql/data
+
+volumes:
+    vehiclerouting-db-data:
