@@ -6,7 +6,7 @@ public static class RoutingEndpoints
     {
         var group = app.MapGroup("api/routing")
             .WithGroupName("Routing")
-            .WithOpenApi();
+            .WithTags("Routing");
 
         group.MapGet("", () => Results.Ok("Roooutes"));
 

@@ -9,15 +9,17 @@ public static class PlaceEndpoints
 {
     public static IEndpointRouteBuilder MapPlaces(this IEndpointRouteBuilder app)
     {
+        const string groupName = "Places";
         var group = app.MapGroup("api/places")
-            .WithTags("Places");
+            .WithGroupName(groupName)
+            .WithTags(groupName);
 
         group.MapGet("", GetPlaces)
-            .WithName("GetPlaces")
+            .WithName(nameof(GetPlaces))
             .WithOpenApi();
 
         group.MapPost("", CreatePlace)
-            .WithName("CreatePlace")
+            .WithName(nameof(CreatePlace))
             .WithOpenApi();
 
         return app;
