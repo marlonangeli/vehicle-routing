@@ -1,7 +1,7 @@
 ﻿using VehicleRouting.Application.Common.Messaging;
 using VehicleRouting.Domain.Entities;
 
-namespace VehicleRouting.Application.Core.CreateVehicle;
+namespace VehicleRouting.Application.Core.Vehicles;
 
 public static class CreateVehicle
 {

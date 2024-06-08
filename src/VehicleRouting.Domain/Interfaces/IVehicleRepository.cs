@@ -2,7 +2,7 @@
 
 namespace VehicleRouting.Domain.Interfaces;
 
-public interface IVehicleRepository : IRepository<Vehicle>
+public interface IVehicleRepository : IBaseRepository<Vehicle>
 {
 
 }

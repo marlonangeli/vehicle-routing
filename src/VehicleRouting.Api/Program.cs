@@ -22,7 +22,11 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
-app.MapPlaces()
-    .MapVehicles();
+// Endpoints
+app
+    .MapPlaces()
+    .MapVehicles()
+    .MapDrivers()
+    .MapRouting();
 
-app.Run();
+await app.RunAsync();
