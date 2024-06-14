@@ -16,6 +16,9 @@ public class LoggingPipelineBehavior<TRequest, TResponse>(
     {
         var requestName = typeof(TRequest).FullName?.Split('.').Last() ?? typeof(TRequest).Name;
 
+        if (requestName.Contains('+'))
+            requestName = requestName.Replace('+', '.');
+
         logger.LogInformation("Starting request {@Request} at {@DateTimeUtc}",
             requestName,
             DateTime.UtcNow);

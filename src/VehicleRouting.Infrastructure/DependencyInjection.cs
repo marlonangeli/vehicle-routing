@@ -25,8 +25,8 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IPlaceRepository, PlaceRepository>();
-        // services.AddScoped<IDriverRepository, DriverRepository>();
-        // services.AddScoped<IVehicleRepository, VehicleRepository>();
+        services.AddScoped<IDriverRepository, DriverRepository>();
+        services.AddScoped<IVehicleRepository, VehicleRepository>();
 
         return services;
     }

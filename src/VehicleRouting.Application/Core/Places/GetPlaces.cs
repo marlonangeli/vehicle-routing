@@ -8,7 +8,7 @@ public static class GetPlaces
 {
     public sealed record Query : IQuery<IReadOnlyList<Place>>;
 
-    public class Handler(IPlaceRepository repository) : IQueryHandler<Query, IReadOnlyList<Place>>
+    internal sealed class Handler(IPlaceRepository repository) : IQueryHandler<Query, IReadOnlyList<Place>>
     {
         public async Task<IReadOnlyList<Place>> Handle(Query request, CancellationToken cancellationToken)
         {

@@ -15,7 +15,7 @@ public static class CreatePlace
         double? Latitude,
         double? Longitude) : ICommand<Guid>;
 
-    internal class Handler(IPlaceRepository repository) : ICommandHandler<Command, Guid>
+    internal sealed class Handler(IPlaceRepository repository) : ICommandHandler<Command, Guid>
     {
         public async Task<Guid> Handle(Command request, CancellationToken cancellationToken)
         {
@@ -38,7 +38,7 @@ public static class CreatePlace
         }
     }
 
-    internal class Validator : AbstractValidator<Command>
+    internal sealed class Validator : AbstractValidator<Command>
     {
         public Validator()
         {

@@ -47,7 +47,9 @@ public sealed class PlaceRepository(VehicleRoutingDbContext context, ILogger<Pla
         {
             logger.LogDebug("Deleting place with id {PlaceId}", entity.Id);
 
-            context.Places.Remove(entity);
+            await context.Places
+                .Where(x => x.Id == entity.Id)
+                .ExecuteDeleteAsync();
 
             logger.LogInformation("Place with id {PlaceId} deleted successfully", entity.Id);
         }

@@ -25,8 +25,8 @@ app.UseHttpsRedirection();
 // Endpoints
 app
     .MapPlaces()
-    .MapVehicles()
     .MapDrivers()
+    .MapVehicles()
     .MapRouting();
 
 await app.RunAsync();

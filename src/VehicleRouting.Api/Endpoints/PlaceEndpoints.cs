@@ -11,31 +11,21 @@ public static class PlaceEndpoints
     {
         const string groupName = "Places";
         var group = app.MapGroup("api/places")
-            .WithGroupName(groupName)
             .WithTags(groupName);
-
-        group.MapGet("", GetPlaces)
-            .WithName(nameof(GetPlaces))
-            .WithOpenApi();
 
         group.MapPost("", CreatePlace)
             .WithName(nameof(CreatePlace))
             .WithOpenApi();
 
+        group.MapGet("", GetPlaces)
+            .WithName(nameof(GetPlaces))
+            .WithOpenApi();
+
         return app;
     }
 
-    private static async Task<IResult> GetPlaces(
-        [FromServices] ISender sender,
-        CancellationToken cancellationToken)
-    {
-        var result = await sender.Send(new GetPlaces.Query(), cancellationToken);
-
-        return Results.Ok(result);
-    }
-
     private static async Task<IResult> CreatePlace(
-        [FromServices] ISender sender,
+        ISender sender,
         CreatePlace.Command command,
         CancellationToken cancellationToken)
     {
@@ -43,7 +33,7 @@ public static class PlaceEndpoints
         {
             var id = await sender.Send(command, cancellationToken);
 
-            return Results.Created($"/places/{id}", id);
+            return Results.Created($"api/places/{id}", id);
         }
         catch (ValidationException e)
         {
@@ -53,5 +43,14 @@ public static class PlaceEndpoints
         {
             return Results.BadRequest(e.Message);
         }
+    }
+
+    private static async Task<IResult> GetPlaces(
+        ISender sender,
+        CancellationToken cancellationToken)
+    {
+        var result = await sender.Send(new GetPlaces.Query(), cancellationToken);
+
+        return Results.Ok(result);
     }
 }
